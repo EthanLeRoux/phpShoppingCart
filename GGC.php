@@ -42,6 +42,8 @@ $storeInfo = $store->fetchStoreInfo('coffee');
 <br>
 <a href="GEB.php">Electronic Boutique</a>
 <br>
+<a href="profile.php">Profile</a>
+<br>
 <a href="logout.php">Log Out</a>
 
 <?php $store->displayCart("coffee"); ?>

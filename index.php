@@ -59,7 +59,7 @@ session_start();
                     $_SESSION["seshUser"] = $username;
                     $_SESSION["seshPass"] = $password;
                     $_SESSION["userid"] = $Row[0];
-
+                    $_SESSION["userStuff"] = $Row;
                     header("Location: GGC.php");
                 } else {
                     echo "User doesnt exist";

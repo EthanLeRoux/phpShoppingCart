@@ -49,7 +49,7 @@ if(isset($_POST['submit'])){
     $userid = $_SESSION['userid'];
     $orderNum = session_id();
     $orderItems = print_r($cart,true);
-    $sqlInsert = "INSERT INTO orders (order_id , user_id ,order_items,order_date,method, address) VALUES ('$orderNum','$userid','$orderItems',CURRENT_DATE,'$paymentmethod','$address')";
+    $sqlInsert = "INSERT INTO orders (user_id ,order_code,order_items,order_date,method, address) VALUES ('$userid','$orderNum','$orderItems',CURRENT_TIMESTAMP,'$paymentmethod','$address')";
     if(mysqli_query($DBConnect,$sqlInsert)){
         $cart = array();
         $_SESSION['cart'] = $cart;
