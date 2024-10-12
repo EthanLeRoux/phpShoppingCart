@@ -4,6 +4,18 @@ include("inc_OnlineStoreDB.php");
 session_start();
 $username = $_SESSION["seshUser"];
 $userId = $_SESSION["userid"];
+
+$TableName = "store_info";
+$storeID = "coffee";
+$SQLstring = "SELECT * FROM $TableName WHERE storeID = '$storeID'";
+
+$result = $DBConnect->query($SQLstring);
+
+if (!$result) {
+    return null;
+} else {
+    $storeInfo = $result->fetch_assoc();
+}
 ?>
 
 <!DOCTYPE html>
@@ -12,46 +24,85 @@ $userId = $_SESSION["userid"];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/profile.css">
+    <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/<?php echo $storeInfo['css_file'];?>">
     <title>Profile</title>
 </head>
 
 <body>
-<h1>Profile</h1>
-<a href="GA.php">Home</a>
-<br>
-<div class="profile">
-    <img src="img/profile.png" height="100px" width="100px">
-    <?php
-    echo "<h2>$username</h2>";
-    print_r($_SESSION["userStuff"]) ;
-    ?>
+<div class="nav">
+    <ul>
+        <li class="heading" style="float:left">
+            <a href="GGC.php" style="font-size: 30px"><?php echo $storeInfo['name']; ?></a>
+        </li>
+
+        <li style="float:right">
+            <a href="ShowCart.php">Cart</a>
+        </li>
+
+        <li style="float:right">
+            <a href="logout.php">Log Out</a>
+        </li>
+
+        <li style="float:right">
+            <a href="GA.php">Antiques</a>
+        </li>
+
+        <li style="float:right">
+            <a href="GEB.php">Electronic Boutique</a>
+        </li>
+
+        <li style="float:right">
+            <a href="GGC.php">Home</a>
+        </li>
+    </ul>
 </div>
-<h2>Past Orders</h2>
-<?php
-    $sqlSelect = "SELECT * FROM orders WHERE user_id = '$userId'";
+<br><br>
+<h1>Profile</h1>
+<br>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; border: 1px solid #ccc; padding: 10px;">
+    <div class="profile">
+        <img src="img/profile.png" height="300px" width="300px">
+        <?php
+        echo "<h1>$username</h1>";
+        $userStuff = $_SESSION["userStuff"];
+        echo "<h3>$userStuff[1]</h3>";
+        ?>
+    </div>
 
-    $QueryResult = mysqli_query($DBConnect, $sqlSelect);
-    if ($QueryResult === FALSE)
-    echo "<p>Unable to execute the query. " .
-        "Error code " . $DBConnect->errno .
-        ": " . $DBConnect->error . "</p>\n";
-    else {
+    <div>
+        <h2>Past Orders</h2>
+        <?php
+        $sqlSelect = "SELECT * FROM orders WHERE user_id = '$userId'";
 
-        $row = array();
-        while($row = $QueryResult->fetch_row()){
-            echo "<table width='100%' border='1'>\n";
-            echo "<tr><th>Order Code</th><th>Order Items</th>" ."<th>Order Date</th></tr>\n";
-            echo "<tr><td>{$row[2]}</td>";
-            echo "<td>{$row[3]}</td>";
-            echo "<td>{$row[4]}</td>";
-            echo "</tr>\n";
-            echo "</tr>";
-            echo "</table>";
-            echo "<br>";
+        $QueryResult = mysqli_query($DBConnect, $sqlSelect);
+        if ($QueryResult === FALSE)
+            echo "<p>Unable to execute the query. " .
+                "Error code " . $DBConnect->errno .
+                ": " . $DBConnect->error . "</p>\n";
+        else {
+
+            $row = array();
+            while($row = $QueryResult->fetch_row()){
+                echo "<table width='100%' border='1'>\n";
+                echo "<tr><th>Order Date</th><th>Order Total</th>" ."</tr>\n";
+                echo "<tr><td>{$row[3]}</td>";
+                echo "<td>R{$row[2]}</td>";
+                echo "</tr>\n";
+                echo "</tr>";
+                echo "</table>";
+                echo "<br>";
+            }
+
         }
+        ?>
+    </div>
+</div>
 
-    }
-?>
+
+
+
+
 </body>
 
 

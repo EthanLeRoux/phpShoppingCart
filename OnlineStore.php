@@ -67,12 +67,14 @@ class OnlineStore
     {
         $total = 0;
         echo "<table width='100%' border='1'>\n";
-        echo "<tr><th>Store ID</th><th>Product ID</th><th>Name</th>" .
+        echo "<tr><th>Image</th><th>Store ID</th><th>Product ID</th><th>Name</th>" .
             "<th>Description</th><th>Price</th><th>Quantity</th><th>Actions</th></tr>\n";
 
         foreach ($this->fetchInventory($storeId) as $Row) {
             $ID = $Row[1];
-            echo "<tr><td>{$Row[0]}</td>";
+            echo "<tr>";
+            echo "<td><img src='img/{$Row[1]}.jpeg' height='100px' width='100px'></td>";
+            echo "<td>{$Row[0]}</td>";
             echo "<td>{$Row[1]}</td>";
             echo "<td>{$Row[2]}</td>";
             echo "<td>{$Row[3]}</td>";

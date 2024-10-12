@@ -1,6 +1,6 @@
 <?php
 $DBConnect = "";
-
+session_start();
 require_once("inc_OnlineStoreDB.php");
 include("OnlineStore.php");
 
@@ -40,11 +40,20 @@ $inventory = $store->fetchInventory('antique');
 <h2><?php echo $storeInfo[2]; ?></h2>
 <p><?php echo $storeInfo[3]; ?></p>
 
-<a href="GGC.php">Gourmet Coffees</a>
-<br>
-<a href="GEB.php">Electronic Boutique</a>
-<br>
-<a href="logout.php">Log Out</a>
+<ul>
+    <li>
+        <a href="GGC.php">Gourmet Coffees</a>
+    </li>
+
+    <li>
+        <a href="GEB.php">Electronic Boutique</a>
+    </li>
+
+    <li>
+        <a href="logout.php">Log Out</a>
+    </li>
+</ul>
+
 <?php $store->displayCart("antique"); ?>
 <a href="ShowCart.php">Show Cart</a>
 </body>

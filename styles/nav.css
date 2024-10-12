@@ -1,0 +1,38 @@
+body .nav{
+    padding: 0px;
+    background-color: #0000FF;
+}
+a{
+    color:#008080;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+li {
+    display: inline;
+    padding: 10px;
+}
+
+li a{
+    color:#008080;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #008080;
+    text-decoration: none;
+    color: white;
+}
+
+
+
+.heading{
+    color:#008080;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
