@@ -9,24 +9,27 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/nav.css">
     <title>Login</title>
 </head>
 
 <body>
 <?php
-    echo session_id();
+echo "Session ID: ".session_id();
 ?>
-    <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
-        <h2>Login</h2>
-        username: <br>
-        <input type="text" name="username" id="" required>
+    <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" style="text-align: center">
+        <h2 style="font-weight: bold; font-size: 45px">Login</h2>
+        <p style="color: #008080; font-weight: bold">Username:</p>
+        <input type="text" name="username" id=""  style="border-radius: 10px; border-color: #008080;padding: 3px" required>
         <br>
-        password: <br>
-        <input type="password" name="password" id="" required>
-        <br>
-        <input type="submit" value="Login" name="submit" required>
+        <p style="color: #008080; font-weight: bold">Password:</p>
+        <input type="password" name="password" id="" style="border-radius: 10px; border-color: #008080;padding: 3px" required>
+        <br><br>
+        <input type="submit" value="Login" name="submit" style="background-color: #008080;
+    text-decoration: none;
+    color: white;border-radius: 10px;border: none;padding: 10px" required>
     </form>
-<p>
+<p style="text-align: center">
     <a href="signup.php">Don't have an account? Click here to create an account.</a>
 </p>
 </body>

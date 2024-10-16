@@ -32,15 +32,14 @@ class OnlineStore
     public function fetchStoreInfo($storeID)
     {
         $TableName = "store_info";
-        $SQLstring = "SELECT * FROM $TableName WHERE storeID = ?";
-        $stmt = $this->DBConnect->prepare($SQLstring);
-        $stmt->bind_param("s", $storeID);
+        $SQLstring = "SELECT * FROM $TableName WHERE storeID = '$storeID'";
+        $result = mysqli_query($this->DBConnect, $SQLstring);
 
-        if (!$stmt->execute()) {
-            $this->ErrorMsgs[] = "Unable to execute query: " . $this->DBConnect->error;
+        if (!$result) {
+            $this->ErrorMsgs[] = "Unable to execute query: " . mysqli_error($this->DBConnect);
             return null;
         } else {
-            return $stmt->get_result()->fetch_row();
+            return mysqli_fetch_row($result);
         }
     }
 
@@ -48,19 +47,19 @@ class OnlineStore
     {
         $inventory = [];
         $TableName = "inventory";
-        $SQLstring = "SELECT * FROM $TableName WHERE storeID = ?";
-        $stmt = $this->DBConnect->prepare($SQLstring);
-        $stmt->bind_param("s", $storeID);
+        $SQLstring = "SELECT * FROM $TableName WHERE storeID = '$storeID'";
+        $result = mysqli_query($this->DBConnect, $SQLstring);
 
-        if (!$stmt->execute()) {
-            $this->ErrorMsgs[] = "Unable to execute query: " . $this->DBConnect->error;
+        $inventory = [];
+        if (!$result) {
+            $this->ErrorMsgs[] = "Unable to execute query: " . mysqli_error($this->DBConnect);
         } else {
-            $result = $stmt->get_result();
-            while ($Row = $result->fetch_row()) {
+            while ($Row = mysqli_fetch_row($result)) {
                 $inventory[] = $Row;
             }
         }
         return $inventory;
+
     }
 
     public function displayCart($storeId)

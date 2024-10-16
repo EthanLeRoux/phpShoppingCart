@@ -35,4 +35,14 @@ li a:hover {
     font-weight: bold;
 }
 
+a:hover {
+    background-color: #008080;
+    text-decoration: none;
+    color: white;
+}
+
+input{
+    color: #008080;
+    border-color: #008080;
+}
 

@@ -13,20 +13,20 @@ session_start();
     </head>
 
     <body>
-    <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
-        <h2>Registration</h2>
-        email: <br>
+    <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" style="text-align: center">
+        <h2 style="font-weight: bold; font-size: 45px">Registration</h2>
+        <p style="color: #008080; font-weight: bold">Email:</p>
         <input type="text" name="email" id="">
         <br>
-        username: <br>
+        <p style="color: #008080; font-weight: bold">Username:</p>
         <input type="text" name="username" id="">
         <br>
-        password: <br>
+        <p style="color: #008080; font-weight: bold">Password:</p>
         <input type="password" name="password" id="">
         <br>
         <input type="submit" value="register" name="submit">
     </form>
-    <p>
+    <p style="text-align: center">
         <a href="index.php">Already have an account? Click here to login.</a>
     </p>
     </body>
