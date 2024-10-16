@@ -1,0 +1,35 @@
+body{
+    font-family:sans-serif;
+}
+.nav_ant{
+    color: #000080
+}
+li {
+    display: inline;
+    padding: 10px;
+}
+li a{
+    color:#000080;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #000080;
+    text-decoration: none;
+    color: white;
+}
+
+a{
+    color:#000080;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: #000080;
+    text-decoration: none;
+    color: white;
+}

@@ -6,7 +6,7 @@ $username = $_SESSION["seshUser"];
 $userId = $_SESSION["userid"];
 
 $TableName = "store_info";
-$storeID = "coffee";
+$storeID = "antique";
 $SQLstring = "SELECT * FROM $TableName WHERE storeID = '$storeID'";
 
 $result = $DBConnect->query($SQLstring);
@@ -24,7 +24,7 @@ if (!$result) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/profile.css">
-    <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/antiques.css">
     <link rel="stylesheet" href="styles/<?php echo $storeInfo['css_file'];?>">
     <title>Profile</title>
 </head>
@@ -45,8 +45,9 @@ if (!$result) {
         </li>
 
         <li style="float:right">
-            <a href="GA.php">Antiques</a>
+            <a href="GGC.php">Coffees</a>
         </li>
+
 
         <li style="float:right">
             <a href="GEB.php">Electronic Boutique</a>

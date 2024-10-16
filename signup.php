@@ -9,6 +9,7 @@ session_start();
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles/nav.css">
         <title>Registration</title>
     </head>
 
@@ -16,15 +17,17 @@ session_start();
     <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" style="text-align: center">
         <h2 style="font-weight: bold; font-size: 45px">Registration</h2>
         <p style="color: #008080; font-weight: bold">Email:</p>
-        <input type="text" name="email" id="">
+        <input type="email" name="email" id="" style="border-radius: 10px; border-color: #008080;padding: 3px" required>
         <br>
         <p style="color: #008080; font-weight: bold">Username:</p>
-        <input type="text" name="username" id="">
+        <input type="text" name="username" id="" style="border-radius: 10px; border-color: #008080;padding: 3px" required>
         <br>
         <p style="color: #008080; font-weight: bold">Password:</p>
-        <input type="password" name="password" id="">
-        <br>
-        <input type="submit" value="register" name="submit">
+        <input type="password" name="password" id="" style="border-radius: 10px; border-color: #008080;padding: 3px" required>
+        <br><br>
+        <input type="submit" value="Register" name="submit" style="background-color: #008080;
+    text-decoration: none;
+    color: white;border-radius: 10px;border: none;padding: 10px">
     </form>
     <p style="text-align: center">
         <a href="index.php">Already have an account? Click here to login.</a>
@@ -40,13 +43,6 @@ session_start();
         $password = filter_input(INPUT_POST,"password",FILTER_SANITIZE_SPECIAL_CHARS);
         $hash = md5($password);
 
-        if(empty($username)){
-            echo "Username is empty.";
-        }
-        elseif(empty($password)){
-            echo "password is empty.";
-        }
-        else{
             //$hash = password_hash($password,PASSWORD_DEFAULT,array("salt"=>"cart"));
             $sqlInsert = "INSERT INTO users (email, username,password) VALUES ('$email','$username','$hash')";
             mysqli_query($DBConnect,$sqlInsert);
@@ -56,7 +52,7 @@ session_start();
             $_SESSION["seshPass"] = $password;
 
             header("Location: index.php");
-        }
+
     }
 ?>
 

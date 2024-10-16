@@ -118,5 +118,5 @@ $storeInfo = $store->fetchStoreInfo('coffee');
 </html>
 
 <?php
-$store->closeConnection();
+    $store->closeConnection();
 ?>

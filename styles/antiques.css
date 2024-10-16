@@ -1,0 +1,32 @@
+.nav_ant{
+    color: #403010
+}
+li {
+    display: inline;
+    padding: 10px;
+}
+li a{
+    color:#403010;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #403010;
+    text-decoration: none;
+    color: white;
+}
+
+a{
+    color:#403010;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: #403010;
+    text-decoration: none;
+    color: white;
+}

@@ -6,7 +6,7 @@ $username = $_SESSION["seshUser"];
 $userId = $_SESSION["userid"];
 
 $TableName = "store_info";
-$storeID = "coffee";
+$storeID = "elecbout";
 $SQLstring = "SELECT * FROM $TableName WHERE storeID = '$storeID'";
 
 $result = $DBConnect->query($SQLstring);
@@ -24,7 +24,7 @@ if (!$result) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/profile.css">
-    <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/elecbout.css">
     <link rel="stylesheet" href="styles/<?php echo $storeInfo['css_file'];?>">
     <title>Profile</title>
 </head>
@@ -33,15 +33,7 @@ if (!$result) {
 <div class="nav">
     <ul>
         <li class="heading" style="float:left">
-            <a href="GGC.php" style="font-size: 30px"><?php echo $storeInfo['name']; ?></a>
-        </li>
-
-        <li style="float:right">
-            <a href="ShowCart.php">Cart</a>
-        </li>
-
-        <li style="float:right">
-            <a href="logout.php">Log Out</a>
+            <a href="GEB.php" style="font-size: 30px"><?php echo $storeInfo['name']; ?></a>
         </li>
 
         <li style="float:right">
@@ -49,7 +41,15 @@ if (!$result) {
         </li>
 
         <li style="float:right">
-            <a href="GEB.php">Electronic Boutique</a>
+            <a href="GGC.php">Gourmet Coffees</a>
+        </li>
+
+        <li style="float:right">
+            <a href="profileElec.php">Profile</a>
+        </li>
+
+        <li style="float:right">
+            <a href="logout.php">Log Out</a>
         </li>
     </ul>
 </div>
